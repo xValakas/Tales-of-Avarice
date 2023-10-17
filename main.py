@@ -79,6 +79,30 @@ while True:
         break
 
 if choice1 == "A":
-    print("The sign reads: \"Trader's Market\"")
+    print("\x1B[3mThe sign reads: \"Trader's Market\"\x1B[0m")
 else:
-    print("The sign reads: \"The Blue Light Inn\"")
+    print("\x1B[3mThe sign reads: \"The Blue Light Inn\"\x1B[0m")
+
+while True:
+    choice2 = input("Where would you like to go?\n A) Trader's Market.\n B) The Blue Light Inn.")
+    if choice2 in ['A', 'B']:
+        break
+
+if choice2 == "A":
+    print("""After some time of struggling against the thick fog and the wet sand, you approach the Trader's Market...
+    or what's left of it. You see stalls have been set up along the path, though most have been destroyed quite some
+    time ago and are barely standing. """)
+    while True:
+        choice3 = input("What would you like to do first?\n A) Investigate the area.\n B) Search the stalls.")
+        if choice3 in ['A', 'B']:
+            break
+    if choice3 == "A":
+        print("""You seem to find a small torn piece of significantly degraded paper. You notice faint markings, as if it"
+              is a map.""")
+    else:
+        print("""You approach the stalls, and although most are heavily damaged, there seem to be various items lying
+        around. You pick up a few gold coins and find a small dagger stabbed into the sand.""")
+
+else:
+    print("""You make your way along the path to the Blue Light Inn and notice the sand getting darker, damper. It is"
+          harder to move than before.""")

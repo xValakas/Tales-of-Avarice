@@ -97,12 +97,14 @@ if choice2 == "A":
         if choice3 in ['A', 'B']:
             break
     if choice3 == "A":
-        print("""You seem to find a small torn piece of significantly degraded paper. You notice faint markings, as if it"
-              is a map.""")
+        print("""You seem to find a small torn piece of significantly degraded paper. You notice faint markings, as if 
+        it is a map.""")
     else:
         print("""You approach the stalls, and although most are heavily damaged, there seem to be various items lying
         around. You pick up a few gold coins and find a small dagger stabbed into the sand.""")
 
+elif choice2 == "B":
+    print("""You make your way along the path to the Blue Light Inn and notice the sand is darker, pulling you in 
+    deeper. The fog thickets as it appears to adopt a ghostly blue hue. """)
 else:
-    print("""You make your way along the path to the Blue Light Inn and notice the sand getting darker, damper. It is"
-          harder to move than before.""")
+    print("False input.")

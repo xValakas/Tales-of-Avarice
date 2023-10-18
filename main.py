@@ -38,6 +38,15 @@ def delay_print(s):
         time.sleep(0.05)
 
 
+# Setting an empty list for inventory, so we can append to it later
+inventory = []
+
+
+def input_error(s):
+    for c in s:
+        print("Please type either 'A' or 'B' into the console.")
+
+
 # input() in this context only works with Enter
 input(Fore.RED + """In this text adventure, to progress through the story you must press Enter when the text is
 in italics. Good luck.
@@ -68,43 +77,64 @@ time.sleep(3)
 input("\x1B[3mYou move towards the light, surely it is the safest option.\x1B[0m \n")
 
 delay_print("""Slowly, you approach the light and eventually, you see a lantern in the distance hanging from a faded
-signpost with scribbles you can barely make out as words. The sign has three branches, one pointing east
-and two pointing west.\n\n""")
+signpost with scribbles you can barely make out as words. The sign has two branches, one pointing east
+and one pointing west.\n\n""")
 
 time.sleep(3)
 
 while True:
-    choice1 = input("Which sign would you like to read?:\n A) Sign pointing west.\n B) Sign pointing east.")
+    choice1 = input("Which sign would you like to read?:\n A) Sign pointing west.\n B) Sign pointing east.\n")
     if choice1 in ['A', 'B']:
         break
 
 if choice1 == "A":
-    print("\x1B[3mThe sign reads: \"Trader's Market\"\x1B[0m")
+    print("\x1B[3mThe sign reads: \"Trader's Market\"\x1B[0m \n")
 else:
-    print("\x1B[3mThe sign reads: \"The Blue Light Inn\"\x1B[0m")
+    print("\x1B[3mThe sign reads: \"The Blue Light Inn\"\x1B[0m \n")
 
+
+# This is where the story (and code) branches out
 while True:
-    choice2 = input("Where would you like to go?\n A) Trader's Market.\n B) The Blue Light Inn.")
+    choice2 = input("Where would you like to go?\n A) Trader's Market.\n B) The Blue Light Inn.\n")
     if choice2 in ['A', 'B']:
         break
+    else:
+        print(input_error)
+
+# howManyChoices = 0;
+# while howManyChoices<2:
 
 if choice2 == "A":
-    print("""After some time of struggling against the thick fog and the wet sand, you approach the Trader's Market...
-    or what's left of it. You see stalls have been set up along the path, though most have been destroyed quite some
-    time ago and are barely standing. """)
+    delay_print("""After some time of struggling against the thick fog and the wet sand, you approach the Trader's
+    Market...or what's left of it. You see stalls have been set up along the path, though most have been destroyed quite
+    some time ago and are barely standing.""")
     while True:
         choice3 = input("What would you like to do first?\n A) Investigate the area.\n B) Search the stalls.")
         if choice3 in ['A', 'B']:
+            # howManyChoices=howManyChoices+1;
             break
+        else:
+            print(input_error)
     if choice3 == "A":
-        print("""You seem to find a small torn piece of significantly degraded paper. You notice faint markings, as if 
-        it is a map.""")
+        delay_print("""You seem to find a small torn piece of significantly degraded paper. You notice the faint
+        markings of what seems to be a map. You are currently located on an island named the 'Cursed Isles', wherever
+        that may be.""")
+        inventory.append('Faded map')
+        input("\x1B[3mThe following items have been added to your inventory: Faded map\x1B[0m \n")
     else:
-        print("""You approach the stalls, and although most are heavily damaged, there seem to be various items lying
-        around. You pick up a few gold coins and find a small dagger stabbed into the sand.""")
+        delay_print("""You approach the stalls, and although most are heavily damaged, there seem to be various items
+        lying around. You pick up a few gold coins and find a small dagger stabbed into the sand.""")
+        inventory.append('10 Gold coins' + 'Dagger')
+        input("\x1B[3mThe following items have been added to your inventory: 10 Gold coins, Dagger\x1B[0m \n")
 
 elif choice2 == "B":
     print("""You make your way along the path to the Blue Light Inn and notice the sand is darker, pulling you in 
-    deeper. The fog thickets as it appears to adopt a ghostly blue hue. """)
+    deeper. The fog feels lighter as it appears to adopt a ghostly blue hue, for some reason it feels strange...
+    Unnatural.""")
+    choice4 = input("Do you wish to follow this path, or would you like to turn back?\n A) Continue.\n B) Turn back")
+    if choice4 == "A":
+        delay_print("You continue to follow the path to the Blue Light Inn")
+    else:
+        print("a")  # I want this to loop back to line 89, though unsure how to do so
 else:
     print("False input.")
